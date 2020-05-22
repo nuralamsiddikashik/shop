@@ -1,4 +1,6 @@
 <?php
+// include "connection.php";
+
 if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
     header( "Location: login.php" );
 }
@@ -206,9 +208,8 @@ if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                <a href="category.php" class="nav-link">
+                  <p>Category Manage</p>
                 </a>
               </li>
               <li class="nav-item">

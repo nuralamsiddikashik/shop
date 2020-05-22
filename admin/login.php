@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ( isset( $_SESSION['login'] ) == true ) {
+if ( isset( $_SESSION['ADMIN_USER'] ) == true ) {
     header( "Location: index.php" );
 }
 
