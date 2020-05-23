@@ -1,39 +1,40 @@
 <?php
-session_start();
 
-if ( isset( $_SESSION['ADMIN_USER'] ) == true ) {
-    header( "Location: index.php" );
-}
+    session_start();
 
-require_once "connection.php";
-//require_once "functions.php";
+    if ( isset( $_SESSION['ADMIN_USER'] ) == true ) {
+        header( "Location: index.php" );
+    }
 
-if ( isset( $_POST['login_dashboard'] ) ) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    require_once "connection.php";
+    //require_once "functions.php";
 
-    if ( empty( $username ) ) {
-        echo "<div class='Field-error'>User name can not be empty</div>";
+    if ( isset( $_POST['login_dashboard'] ) ) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-    } else if ( empty( $password ) ) {
-        echo "<div class='field-error'>Password can not be empty</div>";
+        if ( empty( $username ) ) {
+            echo "<div class='Field-error'>User name can not be empty</div>";
 
-    } else {
-        //$password         = md5( $password );
-        $loginQuery       = "SELECT * FROM `admin_user` WHERE username='{$username}' AND password='{$password}'";
-        $successfulyLogin = mysqli_query( $connection, $loginQuery );
-        $userNameRowCount = mysqli_num_rows( $successfulyLogin );
+        } else if ( empty( $password ) ) {
+            echo "<div class='field-error'>Password can not be empty</div>";
 
-        if ( $userNameRowCount > 0 ) {
-            session_start();
-            $_SESSION['ADMIN_USER'] = $username;
-            $_SESSION['login']      = true;
-            header( "Location: index.php" );
         } else {
-            echo "Something Worng";
+            //$password         = md5( $password );
+            $loginQuery       = "SELECT * FROM `admin_user` WHERE username='{$username}' AND password='{$password}'";
+            $successfulyLogin = mysqli_query( $connection, $loginQuery );
+            $userNameRowCount = mysqli_num_rows( $successfulyLogin );
+
+            if ( $userNameRowCount > 0 ) {
+                session_start();
+                $_SESSION['ADMIN_USER'] = $username;
+                $_SESSION['login']      = true;
+                header( "Location: index.php" );
+            } else {
+                echo "Something Worng";
+            }
         }
     }
-}
 
 ?>
 
@@ -57,6 +58,10 @@ if ( isset( $_POST['login_dashboard'] ) ) {
           padding: 70px;
           box-shadow: 45px 63px 73px 64px #ddd;
       }
+      input.button-color {
+        background-color: #000;
+        border-color: #000;
+    }
   </style>
 
 </head>
@@ -73,7 +78,7 @@ if ( isset( $_POST['login_dashboard'] ) ) {
 
             <div class="row">
                 <div class="column column-60 column-offset-20">
-                    <!-- <?php if ( isset( $msg ) ) {echo $msg;}?> -->
+                    <!--                                                                                                                         <?php if ( isset( $msg ) ) {echo $msg;}?> -->
                     <form action="login.php" method="post">
                         <label>User Name</label>
                         <input type="text" name="username" id="username">
@@ -81,7 +86,7 @@ if ( isset( $_POST['login_dashboard'] ) ) {
                         <label>Password</label>
                         <input type="password" name="password" id="password">
 
-                        <input type="submit" name="login_dashboard" value="Login">
+                        <input class="button-color" type="submit" name="login_dashboard" value="Login">
                     </form>
                 </div>
             </div>

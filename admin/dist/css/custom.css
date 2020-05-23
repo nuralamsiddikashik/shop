@@ -15,3 +15,32 @@ table.cat-table {
     padding: 40px;
     margin-top: 30px;
 }
+
+.badge {
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 400
+}
+.badge-active{
+    background-color: #1e7e34;
+}
+.badge-edit{
+    background-color: #117a8b;
+}
+.badge-delete{
+    background:#dc3545;
+    margin-left: 13px;
+}
+span.badge-edit {
+    margin-left: 15px;
+}
+a.delete {
+    color: #fff;
+    display: inline-block;
+    padding: 2px 2px 2px 2px;
+    text-decoration: none;
+}
+td.right-side {
+    text-align: right;
+}

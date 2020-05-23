@@ -1,10 +1,10 @@
 <?php
 
-session_start();
-if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
-    header( "location:login.php" );
-}
-include "header.php";
+    session_start();
+    if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
+        header( "location:login.php" );
+    }
+    include "header.php";
 
 ?>
 

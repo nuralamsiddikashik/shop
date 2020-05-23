@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
         header( "Location: login.php" );
@@ -55,15 +56,15 @@
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
                                 <td><?php echo $row['category_name']; ?></td>
-                                <td>
+                                <td class="right-side">
                                     <?php
                                         if ( $row['status'] == 1 ) {
-                                            echo "<a href='?type=status&operation=deactive&id=" . $row['id'] . "'>Active</a>";
+                                            echo "<span class='badge badge-active'><a class='delete' href='?type=status&operation=deactive&id=" . $row['id'] . "'>Active</a></span>";
                                         } else {
-                                            echo "<a href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a>";
+                                            echo "<span class='badge badge-active'><a class='delete' href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a></span>";
                                         }
-                                            echo "<a href='editCategory.php?id=" . $row['id'] . "'>Edit</a>";
-                                            echo "<a href='?type=delete&id=" . $row['id'] . "'>Delete</a>";
+                                            echo "<span class='badge badge-edit'><a class='delete' href='editCategory.php?id=" . $row['id'] . "'>Edit</a></span>";
+                                            echo "<span class='badge badge-delete'><a class='delete' href='?type=delete&id=" . $row['id'] . "'>Delete</a></span>";
 
                                         ?>
                                 </td>
