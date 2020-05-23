@@ -10,9 +10,15 @@
         $id             = $_GET['id'];
         $idDisplayQuery = "SELECT * FROM categories WHERE id='{$id}'";
         $idQuery        = mysqli_query( $connection, $idDisplayQuery );
-        $row            = mysqli_fetch_assoc( $idQuery );
-        $categoriesID   = $row['id'];
-        $categories     = $row['category_name'];
+        $check          = mysqli_num_rows( $idQuery );
+        if ( $check > 0 ) {
+            $row          = mysqli_fetch_assoc( $idQuery );
+            $categoriesID = $row['id'];
+            $categories   = $row['category_name'];
+        } else {
+            header( "Location: category.php" );
+        }
+
     }
 
     if ( isset( $_POST['submit_category'] ) ) {

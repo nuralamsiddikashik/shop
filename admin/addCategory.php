@@ -5,20 +5,29 @@
         header( "Location: login.php" );
     }
     require_once "connection.php";
-
+    $msg             = "";
+    $fieldErrMessage = "";
     if ( isset( $_POST['submit_category'] ) ) {
         $category_name = $_POST['category_name'];
 
         if ( empty( $category_name ) ) {
-            echo "Field Can Not Be Empty";
+            $fieldErrMessage = "Field Can Not Be Empty";
         } else {
-            $categoryInsertDatabase = "INSERT INTO categories(category_name,status) VALUES('$category_name','1')";
-            $resultCategory         = mysqli_query( $connection, $categoryInsertDatabase );
 
-            if ( $resultCategory ) {
-                header( "Location: category.php" );
+            $checkCategoryName  = "SELECT * FROM categories WHERE category_name='{$category_name}'";
+            $checkCategoryQuery = mysqli_query( $connection, $checkCategoryName );
+
+            if ( mysqli_num_rows( $checkCategoryQuery ) > 0 ) {
+                $msg = "Category Name Already Exixst";
             } else {
-                echo "Something Wrong";
+                $categoryInsertDatabase = "INSERT INTO categories(category_name,status) VALUES('$category_name','1')";
+                $resultCategory         = mysqli_query( $connection, $categoryInsertDatabase );
+
+                if ( $resultCategory ) {
+                    header( "Location: category.php" );
+                } else {
+                    echo "Something Wrong";
+                }
             }
         }
     }
@@ -33,6 +42,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card card-form">
+                        <?php echo $msg; ?>
+<?php echo $fieldErrMessage; ?>
                         <p>Add New Category</p>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                             <div class="form-group">
