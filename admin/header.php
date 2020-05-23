@@ -1,9 +1,9 @@
 <?php
-// include "connection.php";
+    // include "connection.php";
 
-if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
-    header( "Location: login.php" );
-}
+    if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
+        header( "Location: login.php" );
+    }
 
 ?>
 
@@ -33,6 +33,8 @@ if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="dist/css/custom.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -213,10 +215,7 @@ if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
+                <a href="addCategory.php" class="nav-link"><p>Add Category</p></a>
               </li>
               <li class="nav-item">
                 <a href="pages/tables/jsgrid.html" class="nav-link">
