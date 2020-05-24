@@ -25,9 +25,11 @@
         }
     }
 
-    $productSQL   = "SELECT * FROM product ORDER BY id DESC";
+    // $productSQL   = "SELECT * FROM product ORDER BY id DESC";
+
+    $productSQL = "SELECT product.*,categories.category_name FROM product,categories WHERE product.categories_id=categories.id ORDER BY product.id DESC";
+
     $productQuery = mysqli_query( $connection, $productSQL );
-   
 
 ?>
 
@@ -51,10 +53,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php while ( $row = mysqli_fetch_assoc( $productQuery ) ) {?>
+                        <?php while ( $row = mysqli_fetch_assoc( $productQuery ) ) {
+                            ?>
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['categories_id']; ?></td>
+                                <td><?php echo $row['category_name']; ?></td>
                                 <td><?php echo $row['product_name']; ?></td>
                                 <td><?php echo $row['product_image']; ?></td>
                                 <td><?php echo $row['product_mrp']; ?></td>
@@ -84,4 +87,4 @@
 
 
 
-<?php include_once "includes/footer.php"; ?>
+<?php include_once "includes/footer.php";?>
