@@ -1,11 +1,5 @@
 <?php
-
-    session_start();
-    if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
-        header( "Location: login.php" );
-    }
-
-    require_once "connection.php";
+    include_once "includes/header.php";
 
     if ( isset( $_GET['type'] ) && $_GET['type'] != '' ) {
         $type = $_GET['type'];
@@ -33,7 +27,7 @@
 
     $productSQL   = "SELECT * FROM product ORDER BY id DESC";
     $productQuery = mysqli_query( $connection, $productSQL );
-    include "header.php";
+   
 
 ?>
 
@@ -90,4 +84,4 @@
 
 
 
-<?php include "footer.php";?>
+<?php include_once "includes/footer.php"; ?>

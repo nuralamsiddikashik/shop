@@ -1,13 +1,10 @@
 <?php
 
-    session_start();
+    include_once "functions.php";
 
     if ( isset( $_SESSION['ADMIN_USER'] ) == true ) {
         header( "Location: index.php" );
     }
-
-    require_once "connection.php";
-    //require_once "functions.php";
 
     if ( isset( $_POST['login_dashboard'] ) ) {
         $username = $_POST['username'];
@@ -26,7 +23,6 @@
             $userNameRowCount = mysqli_num_rows( $successfulyLogin );
 
             if ( $userNameRowCount > 0 ) {
-                session_start();
                 $_SESSION['ADMIN_USER'] = $username;
                 $_SESSION['login']      = true;
                 header( "Location: index.php" );
@@ -78,7 +74,7 @@
 
             <div class="row">
                 <div class="column column-60 column-offset-20">
-                    <!--                                                                                                                         <?php if ( isset( $msg ) ) {echo $msg;}?> -->
+                    <!--                                                                                                                                                                         <?php if ( isset( $msg ) ) {echo $msg;}?> -->
                     <form action="login.php" method="post">
                         <label>User Name</label>
                         <input type="text" name="username" id="username">

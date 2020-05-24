@@ -1,11 +1,6 @@
 <?php
 
-    session_start();
-    if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
-        header( "Location: login.php" );
-    }
-
-    require_once "connection.php";
+    include_once "includes/header.php";
 
     if ( isset( $_GET['type'] ) && $_GET['type'] != '' ) {
         $type = $_GET['type'];
@@ -33,7 +28,6 @@
 
     $sql    = "SELECT * FROM categories ORDER BY category_name ASC";
     $result = mysqli_query( $connection, $sql );
-    include "header.php";
 
 ?>
 
@@ -80,4 +74,4 @@
 
 
 
-<?php include "footer.php";?>
+<?php include_once "includes/footer.php"; ?>

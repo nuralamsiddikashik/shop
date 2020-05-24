@@ -1,10 +1,5 @@
 <?php
-
-    session_start();
-    if ( !isset( $_SESSION["ADMIN_USER"] ) ) {
-        header( "Location: login.php" );
-    }
-    require_once "connection.php";
+    include_once "includes/header.php";
 
     if ( isset( $_GET['id'] ) && !empty( $_GET['id'] ) ) {
         $id             = $_GET['id'];
@@ -40,7 +35,7 @@
         }
     }
 
-include "header.php";?>
+?>
 
 <div class="content-wrapper">
     <section class="content">
@@ -64,4 +59,4 @@ include "header.php";?>
 </div>
 
 
-<?php include "footer.php";?>
+<?php include_once "includes/footer.php"; ?>
