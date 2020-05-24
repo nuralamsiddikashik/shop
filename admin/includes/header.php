@@ -236,11 +236,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <p>Add Product</p>
-                </a>
-              </li>
+              <li class="nav-item"><a href="addProduct.php" class="nav-link"><p>Add Product</p></a></li>
               <li class="nav-item">
                 <a href="productManage.php" class="nav-link"><p>Product Manage</p></a>
               </li>
