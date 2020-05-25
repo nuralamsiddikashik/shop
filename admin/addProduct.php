@@ -19,16 +19,15 @@
         $product_meta_description  = $_POST['product_meta_description'];
         $product_meta_keyword      = $_POST['product_meta_keyword'];
         $product_short_description = $_POST['product_short_description'];
-        //$product_image             = $_POST['product_image'];
-        // $product_image = addslashes( file_get_contents( $_FILES['product_image']['tmp_name'] ) );
 
-        $file_name  = $_FILES['product_image']['name'];
-        $file_size  = $_FILES['product_image']['size'];
-        $file_tmp   = $_FILES['product_image']['tmp_name'];
-        $file_type  = $_FILES['product_image']['type'];
-        $file_ext   = explode( '.', $file_name );
-        $ext        = end( $file_ext );
-        $extentions = array( "jpeg", "jpg", "png" );
+        $file_name   = $_FILES['product_image']['name'];
+        $file_size   = $_FILES['product_image']['size'];
+        $file_tmp    = $_FILES['product_image']['tmp_name'];
+        $file_type   = $_FILES['product_image']['type'];
+        $file_ext    = explode( '.', $file_name );
+        $ext         = end( $file_ext );
+        $extentions  = array( "jpeg", "jpg", "png" );
+        $newFileName = time() . rand( 123456789, 987456123 ) . '.' . $ext;
 
         if ( in_array( $ext, $extentions ) === false ) {
             $errors[] = "This extentios file not support";
@@ -39,7 +38,7 @@
         }
 
         if ( empty( $errors ) == true ) {
-            move_uploaded_file( $file_tmp, "upload/" . $file_name );
+            move_uploaded_file( $file_tmp, "upload/" . $newFileName );
         } else {
             print_r( $errors );
             die();
@@ -66,16 +65,16 @@
         } else if ( empty( $product_short_description ) ) {
             echo 'Product Short Description Can Not Be empty';
         } else {
-            $addProductDatabase = "INSERT INTO product(categories_id,product_name,product_mrp,product_price,product_qty,product_image,product_description,product_meta_title,product_meta_description,product_short_description,product_meta_keyword,status) VALUES('{$categories_id}','{$product_name}','{$product_mrp}','{$product_price}','{$product_qty}','{$file_name}','{$product_description}','{$product_meta_title}','{$product_meta_description}','{$product_short_description}','{$product_meta_keyword}','1');";
+            $addProductDatabase = "INSERT INTO product(categories_id,product_name,product_mrp,product_price,product_qty,product_image,product_description,product_meta_title,product_meta_description,product_short_description,product_meta_keyword,status) VALUES('{$categories_id}','{$product_name}','{$product_mrp}','{$product_price}','{$product_qty}','{$newFileName}','{$product_description}','{$product_meta_title}','{$product_meta_description}','{$product_short_description}','{$product_meta_keyword}','1');";
 
             $resultAddProduct = mysqli_query( $connection, $addProductDatabase );
 
             if ( $resultAddProduct ) {
-                var_dump( $resultAddProduct );
-                //header( "Location: productManage.php" );
+                //var_dump( $resultAddProduct );
+                header( "Location: productManage.php" );
             } else {
-                var_dump( mysqli_error( $connection ) );
-                //echo "Something Wrong";
+                //var_dump( mysqli_error( $connection ) );
+                echo "Something Wrong";
             }
         }
 

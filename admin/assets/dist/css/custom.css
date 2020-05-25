@@ -44,3 +44,9 @@ a.delete {
 td.right-side {
     text-align: right;
 }
+.cat-table img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+}
