@@ -59,7 +59,7 @@
                                 <td><?php echo $row['id']; ?></td>
                                 <td><?php echo $row['category_name']; ?></td>
                                 <td><?php echo $row['product_name']; ?></td>
-                                <td><?php echo $row['product_image']; ?></td>
+                                <td><img src="upload/<?php echo $row['product_image']; ?>"></td>
                                 <td><?php echo $row['product_mrp']; ?></td>
                                 <td><?php echo $row['product_price']; ?></td>
                                 <td><?php echo $row['product_qty']; ?></td>
@@ -70,7 +70,7 @@
                                         } else {
                                             echo "<span class='badge badge-active'><a class='delete' href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a></span>";
                                         }
-                                            echo "<span class='badge badge-edit'><a class='delete' href='editCategory.php?id=" . $row['id'] . "'>Edit</a></span>";
+                                            echo "<span class='badge badge-edit'><a class='delete' href='productEdit.php?id=" . $row['id'] . "'>Edit</a></span>";
                                             echo "<span class='badge badge-delete'><a class='delete' href='?type=delete&id=" . $row['id'] . "'>Delete</a></span>";
 
                                         ?>
