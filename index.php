@@ -73,17 +73,17 @@
                         <div class="product__list clearfix mt--30">
                             <!-- Start Single Category -->
                             <?php
-                            $getProduct = get_product('latest',2 );
+                            $getProduct = get_product('latest',8 );
                             foreach ( $getProduct as $product ) { ?>
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                     <div class="category">
                                         <div class="ht__cat__thumb">
-                                            <a href="product-details.html">
+                                            <a href="singleProduct.php?id=<?php echo $product['id']; ?>">
                                                 <img src="admin/upload/<?php echo $product['product_image']; ?>" alt="product images">
                                             </a>
                                         </div>
                                         <div class="fr__product__inner">
-                                            <h4><a href="product-details.html"><?php echo $product['product_name']; ?></a></h4>
+                                            <h4><a href="singleProduct.php?id=<?php echo $product['id']; ?>"><?php echo $product['product_name']; ?></a></h4>
                                             <ul class="fr__pro__prize">
                                                 <li class="old__prize">$<?php echo $product['product_mrp']; ?></li>
                                                 <li>$<?php echo $product['product_price']; ?></li>
