@@ -1,6 +1,7 @@
 <?php
 
     include_once "functions.php";
+    session_start();
 
     $catSQLQuery = "SELECT * FROM categories WHERE status=1";
     $catResult   = mysqli_query( $connection, $catSQLQuery );
@@ -73,6 +74,7 @@
                                     <ul class="main__menu">
 
                                         <li><a href="index.php">Home</a></li>
+
                                         <?php foreach ( $catArray as $list ) {?>
                                             <li><a href="category.php?id=<?php echo $list['id']; ?>"><?php echo $list['category_name']; ?></a></li>
                                         <?php }?>
@@ -98,12 +100,24 @@
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">contact</a></li>
+
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
+                                    <ul>
+                                        <?php
+                                            if ( isset( $_SESSION['login'] ) == true ) {
+                                                echo "<li><a href='logout.php'>Logout</a></li>";
+                                            }else{
+                                                echo "<li><a href='login.php'>Login</a></li>";
+                                            }
+
+                                        ?>
+
+                                    </ul>
                                     <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>

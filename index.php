@@ -1,5 +1,7 @@
 <?php include_once "header.php";?>
-<?php include_once "functions.php";?>
+<?php include_once "functions.php"; ?>
+
+
 
         <div class="body__overlay"></div>
 
@@ -73,8 +75,8 @@
                         <div class="product__list clearfix mt--30">
                             <!-- Start Single Category -->
                             <?php
-                            $getProduct = get_product('latest',8 );
-                            foreach ( $getProduct as $product ) { ?>
+                                $getProduct = get_product( 'latest', 8 );
+                            foreach ( $getProduct as $product ) {?>
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                     <div class="category">
                                         <div class="ht__cat__thumb">
@@ -91,7 +93,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php }?>
                             <!-- End Single Category -->
                         </div>
                     </div>

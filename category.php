@@ -4,12 +4,13 @@
     include_once "functions.php";
     $catID      = $_GET['id'];
     $getProduct = get_product( 'latest', '', $catID );
+
 ?>
 
 <section class="htc__product__grid bg__white ptb--100">
     <div class="container">
         <div class="row">
-        <?php if ( count( $getProduct ) > 0 ) {?>
+        <?php if ( count( $getProduct ) > 0 ) { ?>
         <div class="col-lg-12 order-lg-12 order-1">
             <?php
             foreach ( $getProduct as $product ) {?>
