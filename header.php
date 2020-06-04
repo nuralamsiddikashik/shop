@@ -1,8 +1,6 @@
 <?php
 
     include_once "functions.php";
-    session_start();
-
     $catSQLQuery = "SELECT * FROM categories WHERE status=1";
     $catResult   = mysqli_query( $connection, $catSQLQuery );
     $catArray    = array();

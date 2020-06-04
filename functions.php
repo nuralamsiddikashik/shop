@@ -1,4 +1,8 @@
-<?php include_once "admin/connection.php";
+<?php 
+ob_start();
+session_start();
+
+include_once "admin/connection.php";
 
 function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
 

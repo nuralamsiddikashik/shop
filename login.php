@@ -1,8 +1,8 @@
 <?php
-
+    include_once "functions.php";
     include_once "admin/connection.php";
-
-    // Login Code
+   
+     // Login Code
 
     if ( isset( $_POST['login_user'] ) ) {
         $email    = $_POST['email'];
@@ -21,11 +21,10 @@
             $userNameRowCount = mysqli_num_rows( $successfulyLogin );
 
             if ( $userNameRowCount > 0 ) {
-                session_start();
-                $_SESSION['FRONTEND_USER'] = $username;
+                $_SESSION['FRONTEND_USER'] = $email;
                 $_SESSION['login']         = true;
 
-                header( "Location: index.php" );
+                header( "Location: profile.php" );
             } else {
                 var_dump( mysqli_error( $connection ) );
             }
