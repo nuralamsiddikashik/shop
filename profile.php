@@ -22,6 +22,7 @@
                     <li class="bg-info"><a href="profile.php?tab=dashboard">Dashboard</a></li>
                     <li class="bg-info"><a href="profile.php?tab=change-password">Password</a></li>
                     <li class="bg-info"><a href="profile.php?tab=orders">Orders</a></li>
+                    <li class="bg-info"><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
             </div>
