@@ -1,8 +1,11 @@
-<?php 
+<?php
 ob_start();
 session_start();
 
 include_once "admin/connection.php";
+include_once "includes/add_to_cart.php";
+
+$cart = new Add_to_cart();
 
 function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
 
@@ -35,4 +38,13 @@ function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
     }
     return $data;
 
+}
+
+function get_single_product_total_price( $sp, $price, $qty ) {
+   
+    if ( $sp == '' || $sp == null || $sp == 0 ) {
+        return $price * $qty;
+    } else {
+        return $sp * $qty;
+    }
 }

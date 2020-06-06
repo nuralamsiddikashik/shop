@@ -127,6 +127,7 @@
     <!-- Waypoints.min.js. -->
     <script src="assets/js/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="assets/js/custom.js"></script>
     <script src="assets/js/main.js"></script>
 
 </body>

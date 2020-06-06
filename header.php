@@ -77,6 +77,8 @@
                                             <li><a href="category.php?id=<?php echo $list['id']; ?>"><?php echo $list['category_name']; ?></a></li>
                                         <?php }?>
 
+                                        <li><a href="cart.php">Cart</a></li>
+
                                     </ul>
                                 </nav>
 
@@ -123,8 +125,8 @@
                                         <a href="#"><i class="icon-user icons"></i></a>
                                     </div>
                                     <div class="htc__shopping__cart">
-                                        <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                        <a href="#"><span class="htc__qua">2</span></a>
+                                        <a class="my_cart__menu" href="<?php //echo get_cart_page_url(); ?>"><i class="icon-handbag icons"></i></a>
+                                        <a href="<?php //echo get_cart_page_url(); ?>"><span class="htc__qua"><?php echo $cart->totalProducts(); ?></span></a>
                                     </div>
                                 </div>
                             </div>

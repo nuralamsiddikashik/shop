@@ -103,6 +103,14 @@
                                             <li><a href="#" target="_blank"><i class="icon-social-pinterest icons"></i></a></li>
                                         </ul>
                                     </div>
+                                    <div class="sin__desc align--left">
+                                        <p><span>Quantity:</span>
+                                            <input type="number" name="quantity" id="quantity" min="1" max="30" value="1">
+                                        </p>
+                                    </div>
+                                    <div class="cart-btn" style="margin-top: 20px;">
+                                        <a class="fr__btn" id="add_to_cart_btn" href="javascript:void(0)" onclick="manageCart(<?php echo $productID; ?>, 'add')">Add to cart</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
