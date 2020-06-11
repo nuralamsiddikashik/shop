@@ -40,6 +40,10 @@
                         include_once "profile/orders.php";
                         break;
 
+                    case 'order-details':
+                        include_once "profile/order_details.php";
+                        break;
+
                     default:
                         include_once "profile/dashboard.php";
                         break;

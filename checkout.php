@@ -33,6 +33,7 @@
                 $insertToDatabaseUserReg = "INSERT INTO user_frontend (name,email,phone,password) VALUES('{$name}','{$email}','{$phone}','{$password}')";
 
                 $insertDatabaseReg = mysqli_query( $connection, $insertToDatabaseUserReg );
+
                 header( "Location: checkout.php" );
                 return $insertDatabaseReg;
             }
@@ -106,8 +107,23 @@
             $productSQL = "INSERT INTO orders(user_id,address_line_1,address_line_2,city,state,zip,country,order_total,payment_method,payment_status,order_status) VALUES('{$userID}','{$address_line_1}','{$address_line_2}','{$city}','{$state}','{$zip}','{$country}','{$order_total}','{$payment_method}','{$payment_status}','{$order_status}')";
 
             $productEntry = mysqli_query( $connection, $productSQL );
-            unset( $_SESSION['cart'] );
-            header( "Location: thank_you.php" );
+
+            $order_id = mysqli_insert_id($connection);
+            
+            foreach ( $_SESSION['cart'] as $id => $value ){
+
+                $product      = get_product( '', '', '', $id );
+                $sellingPrice = $product[0]['product_price'];
+                $totalPrice = $sellingPrice * $value['quantity'];
+                $product_qty = $value['quantity'];
+
+                $productIDSQL = "INSERT INTO order_details(order_id,product_id,product_price,product_qty,total_price) VALUES('{$order_id}','{$id}','{$sellingPrice}','{$product_qty}','{$totalPrice}')";
+                
+                $productID = mysqli_query( $connection, $productIDSQL );
+            }
+
+                unset( $_SESSION['cart'] );
+                header( "Location: thank_you.php" );
             if ( !$productEntry ) {
                 var_dump( mysqli_error( $connection ) );
             }

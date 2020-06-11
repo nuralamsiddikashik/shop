@@ -122,7 +122,7 @@
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
                                     <div class="header__account">
-                                        <a href="#"><i class="icon-user icons"></i></a>
+                                        <a href="profile.php"><i class="icon-user icons"></i></a>
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="my_cart__menu" href="<?php //echo get_cart_page_url(); ?>"><i class="icon-handbag icons"></i></a>
