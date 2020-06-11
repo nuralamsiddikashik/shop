@@ -48,3 +48,18 @@ function get_single_product_total_price( $sp, $price, $qty ) {
         return $sp * $qty;
     }
 }
+
+function get_user_id_by_email($email) {
+    global $connection;
+    $output = '';
+
+    $sql = "SELECT id FROM user_frontend WHERE email='{$email}' LIMIT 1";
+    $result = mysqli_query($connection, $sql);
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $output = $row['id'];
+    } else {
+        $output = mysqli_error($connection);
+    }
+    return $output;
+}
