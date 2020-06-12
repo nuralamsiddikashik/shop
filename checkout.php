@@ -72,7 +72,7 @@
         $order_total    = (float) $_POST['order_total'];
         $payment_method = $_POST['payment_method'];
         $payment_status = 'pending';
-        $order_status   = 'pending';
+        $order_status   = '1';
 
         // Users table info
         $name  = $_POST['name'];

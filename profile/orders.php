@@ -1,7 +1,9 @@
 <?php 
 	
 	$userID = get_user_id_by_email($_SESSION['FRONTEND_USER']); 	
-	$orderQuery = "SELECT * FROM orders WHERE user_id='{$userID}'"; 
+	// $orderQuery = "SELECT * FROM orders WHERE user_id='{$userID}'"; 
+	$orderQuery = "SELECT orders.*,order_status.name as order_status FROM orders,order_status WHERE orders.user_id='{$userID}' AND order_status.id=order_status"; 
+	
 	$orderResult = mysqli_query($connection, $orderQuery);
 	$orderData = array(); 
 	while ($row = mysqli_fetch_assoc($orderResult)) {
