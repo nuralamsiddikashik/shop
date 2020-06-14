@@ -108,22 +108,22 @@
 
             $productEntry = mysqli_query( $connection, $productSQL );
 
-            $order_id = mysqli_insert_id($connection);
-            
-            foreach ( $_SESSION['cart'] as $id => $value ){
+            $order_id = mysqli_insert_id( $connection );
+
+            foreach ( $_SESSION['cart'] as $id => $value ) {
 
                 $product      = get_product( '', '', '', $id );
                 $sellingPrice = $product[0]['product_price'];
-                $totalPrice = $sellingPrice * $value['quantity'];
-                $product_qty = $value['quantity'];
+                $totalPrice   = $sellingPrice * $value['quantity'];
+                $product_qty  = $value['quantity'];
 
                 $productIDSQL = "INSERT INTO order_details(order_id,product_id,product_price,product_qty,total_price) VALUES('{$order_id}','{$id}','{$sellingPrice}','{$product_qty}','{$totalPrice}')";
-                
+
                 $productID = mysqli_query( $connection, $productIDSQL );
             }
 
-                unset( $_SESSION['cart'] );
-                header( "Location: thank_you.php" );
+            unset( $_SESSION['cart'] );
+            header( "Location: thank_you.php" );
             if ( !$productEntry ) {
                 var_dump( mysqli_error( $connection ) );
             }
@@ -330,19 +330,19 @@
 
                                     // $totalPrice = $sellingPrice * $value['quantity'];
                                 ?>
-	                                <div class="single-item">
-	                                    <div class="single-item__thumb">
-	                                        <img src="admin/upload/<?php echo $productImage; ?>" alt="ordered item">
-	                                    </div>
-	                                    <div class="single-item__content">
-	                                        <a href="#"><?php echo $productName; ?></a>
-	                                        <span class="price">$<?php echo $sellingPrice; ?></span>
-	                                    </div>
-	                                    <div class="single-item__remove">
-	                                        <td class="product-remove"><a href="javascript:void(0)" onclick="manageCart(<?php echo $id; ?>, 'remove')"><i class="icon-trash icons"></i></a></td>
-	                                    </div>
-	                                </div>
-	                            <?php endforeach;?>
+		                                <div class="single-item">
+		                                    <div class="single-item__thumb">
+		                                        <img src="admin/upload/<?php echo $productImage; ?>" alt="ordered item">
+		                                    </div>
+		                                    <div class="single-item__content">
+		                                        <a href="#"><?php echo $productName; ?></a>
+		                                        <span class="price">$<?php echo $sellingPrice; ?></span>
+		                                    </div>
+		                                    <div class="single-item__remove">
+		                                        <td class="product-remove"><a href="javascript:void(0)" onclick="manageCart(<?php echo $id; ?>, 'remove')"><i class="icon-trash icons"></i></a></td>
+		                                    </div>
+		                                </div>
+		                            <?php endforeach;?>
 
                             </div>
                             <div class="ordre-details__total">

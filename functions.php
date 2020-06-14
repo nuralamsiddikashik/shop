@@ -7,7 +7,7 @@ include_once "includes/add_to_cart.php";
 
 $cart = new Add_to_cart();
 
-function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
+function get_product( $type = '', $limit = 5, $catID = '', $productID = '', $is_best_seller = '') {
 
     global $connection;
     $productSQL = "SELECT * FROM product WHERE status=1";
@@ -18,6 +18,10 @@ function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
 
     if ( $productID != '' ) {
         $productSQL .= " AND id='{$productID}'";
+    }
+
+    if ( $is_best_seller != '' ) {
+        $productSQL .= " AND product.best_seller=1";
     }
 
     if ( $type == 'latest' ) {

@@ -22,7 +22,7 @@
 
             if ( $userNameRowCount > 0 ) {
                 $_SESSION['FRONTEND_USER'] = $email;
-                $_SESSION['login']         = true;
+                $_SESSION['user_login']    = true;
 
                 header( "Location: profile.php" );
             } else {

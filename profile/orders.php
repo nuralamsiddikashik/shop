@@ -14,7 +14,7 @@
 
 <h3>My orders</h3>
 <div class="divider"></div>
-<table class="table table-bordered">
+<table class="table table-bordered cat-table">
     <thead class="bg-info">
         <tr>
             <th>Order ID</th>

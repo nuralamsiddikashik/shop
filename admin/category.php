@@ -37,8 +37,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table cat-table">
-                        <thead>
+                    <table class="table cat-table table-bordered">
+                        <thead class="bg-info">
                             <tr>
                                 <th>Category ID</th>
                                 <th>Category Name</th>
