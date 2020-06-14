@@ -116,8 +116,9 @@
                 $sellingPrice = $product[0]['product_price'];
                 $totalPrice   = $sellingPrice * $value['quantity'];
                 $product_qty  = $value['quantity'];
+                $currentTime  = date('Y-m-d h:i:s'); 
 
-                $productIDSQL = "INSERT INTO order_details(order_id,product_id,product_price,product_qty,total_price) VALUES('{$order_id}','{$id}','{$sellingPrice}','{$product_qty}','{$totalPrice}')";
+                $productIDSQL = "INSERT INTO order_details(order_id,product_id,product_price,product_qty,total_price,created_at) VALUES('{$order_id}','{$id}','{$sellingPrice}','{$product_qty}','{$totalPrice}', '{$currentTime}')";
 
                 $productID = mysqli_query( $connection, $productIDSQL );
             }

@@ -1,13 +1,13 @@
 <?php
 ob_start();
 session_start();
-
+date_default_timezone_set('Asia/Dhaka');
 include_once "admin/connection.php";
 include_once "includes/add_to_cart.php";
 
 $cart = new Add_to_cart();
 
-function get_product( $type = '', $limit = 5, $catID = '', $productID = '', $is_best_seller = '') {
+function get_product( $type = '', $limit = 5, $catID = '', $productID = '') {
 
     global $connection;
     $productSQL = "SELECT * FROM product WHERE status=1";
@@ -20,9 +20,9 @@ function get_product( $type = '', $limit = 5, $catID = '', $productID = '', $is_
         $productSQL .= " AND id='{$productID}'";
     }
 
-    if ( $is_best_seller != '' ) {
-        $productSQL .= " AND product.best_seller=1";
-    }
+    // if ( $is_best_seller != '' ) {
+    //     $productSQL .= " AND product.best_seller=1";
+    // }
 
     if ( $type == 'latest' ) {
         $productSQL .= " ORDER BY id DESC";
@@ -66,4 +66,32 @@ function get_user_id_by_email($email) {
         $output = mysqli_error($connection);
     }
     return $output;
+}
+
+function best_seller_product(){
+
+    global $connection; 
+
+    $dateToMinus = 20;
+    $todayDate = date('Y-m-d h:i:s');
+    $minusDate = date( "Y-m-d 23:59:59", strtotime( $todayDate . "-{$dateToMinus} day"));
+
+    $sql = "SELECT product_id, SUM(product_qty) AS TotalQuantity FROM order_details WHERE created_at BETWEEN '$minusDate' AND '$todayDate' GROUP BY product_id ORDER BY SUM(product_qty) DESC LIMIT 4";
+
+
+    $runGalibBahiQuery = mysqli_query($connection, $sql); 
+  
+    $blankArray = array(); 
+    while($row = mysqli_fetch_assoc($runGalibBahiQuery)){
+        $blankArray[] = $row['product_id']; 
+    }
+    
+    $products = array(); 
+    foreach ($blankArray as $value) {
+        $product = get_product('','','',$value); 
+        $products[] = $product[0];
+    }
+
+    return $products; 
+
 }

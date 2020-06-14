@@ -26,7 +26,6 @@
         $product_price             = $_POST['product_price'];
         $product_qty               = $_POST['product_qty'];
         $product_description       = $_POST['product_description'];
-        $best_seller               = $_POST['best_seller']; 
         $product_meta_title        = $_POST['product_meta_title'];
         $product_meta_description  = $_POST['product_meta_description'];
         $product_short_description = $_POST['product_short_description'];
@@ -65,7 +64,6 @@
                 product_price='{$product_price}',
                 product_qty='{$product_qty}',
                 product_description='{$product_description}',
-                best_seller='{$best_seller}', 
                 product_meta_title='{$product_meta_title}',
                 product_meta_description='{$product_meta_description}',
                 product_short_description='{$product_short_description}',
@@ -78,7 +76,6 @@
                 product_price='{$product_price}',
                 product_qty='{$product_qty}',
                 product_description='{$product_description}',
-                best_seller='{$best_seller}', 
                 product_meta_title='{$product_meta_title}',
                 product_meta_description='{$product_meta_description}',
                 product_short_description='{$product_short_description}',
@@ -160,26 +157,6 @@
                                 <label>Product Description</label>
                                 <input class="form-control" type="text" name="product_description" value="<?php echo $array['product_description']; ?>">
                             </div>
-
-                            <div class="form-group">
-                               <label>Best Seller</label>
-                                 <select class="form-control" name="best_seller">
-                                    <option value=''>Select</option>
-                                    <?php 
-                                        if($best_seller == 1){
-                                            echo '<option value="1" selected>Yes</option>
-                                            <option value="0">No</option>'; 
-                                        }else if($best_seller == 0 ){
-                                            echo '<option value="1">Yes</option>
-                                            <option value="0" selected>No</option>'; 
-                                        }else{
-                                             echo '<option value="1">Yes</option>
-                                            <option value="0">No</option>'; 
-                                        }
-                                    ?>
-                               </select>
-                            </div>
-
 
                             <div class="form-group">
                                 <label>Product meta title</label>

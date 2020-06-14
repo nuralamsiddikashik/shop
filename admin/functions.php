@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+date_default_timezone_set('Asia/Dhaka');
 include_once "connection.php";
 
 // function pr( $arr ) {
@@ -87,3 +88,4 @@ function get_product( $type = '', $limit = 5, $catID = '', $productID = '' ) {
     return $data;
 
 }
+

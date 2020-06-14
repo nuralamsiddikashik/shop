@@ -24,12 +24,13 @@
                 <th>Product Name</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
+                <th>Order Time</th>
             </tr>
         </thead>
         <tbody>
             <?php
                 foreach($orderDetailData as $order_detail) {
-                    
+
                     $product_id = $order_detail['product_id'];
                     
                     $product = get_product( '', '', '', $product_id );
@@ -49,6 +50,7 @@
                     echo "<td> {$product_info['product_name']} </td>";
                     echo "<td> {$order_detail['product_qty']} </td>";
                     echo "<td> {$order_detail['total_price']} </td>";
+                     echo "<td> {$order_detail['created_at']} </td>";
                     echo "</tr>";
                 }
             ?>
